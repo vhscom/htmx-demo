@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev:orig": "bun run --hot src/index.ts",
+    "dev": "bun run --watch src/server.tsx"
   },
   "dependencies": {
     "hono": "^3.12.8"
