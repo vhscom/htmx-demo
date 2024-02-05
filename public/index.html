@@ -5,7 +5,34 @@
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
   <body>
-    <button hx-get="/version" hx-target="#version">Get Bun Version</button>
-    <div id="version"></div>
+    <h1>Dogs</h1>
+
+    <form
+      hx-disabled-elt="#add-btn"
+      hx-post="/dog"
+      hx-target="table tbody"
+      hx-swap="afterbegin"
+      hx-on:htmx:after-request="this.reset()"
+    >
+      <div>
+        <label for="name">Name</label>
+        <input name="name" required size="30" type="text" />
+      </div>
+      <div>
+        <label for="breed">Breed</label>
+        <input name="breed" required size="30" type="text" />
+      </div>
+      <button id="add-btn">Add</button>
+    </form>
+
+    <table hx-get="/dog" hx-target="tbody" hx-trigger="revealed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Breed</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </body>
 </html>
